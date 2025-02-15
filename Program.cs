@@ -17,7 +17,7 @@ namespace birthday_notification_api
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddHealthChecks().AddMySql(builder.Configuration.GetConnectionString("DefaultConnection")!, name: "database");
+            //builder.Services.AddHealthChecks().AddMySql(builder.Configuration.GetConnectionString("DefaultConnection")!, name: "database");
 
             builder.Services.AddScoped<BirthdayService>();
 
@@ -39,26 +39,26 @@ namespace birthday_notification_api
 
             app.UseAuthorization();
 
-            app.MapHealthChecks("/health", new HealthCheckOptions
-            {
-                ResponseWriter = async (context, report) =>
-                {
-                    context.Response.ContentType = "application/json";
+            //app.MapHealthChecks("/health", new HealthCheckOptions
+            //{
+            //    ResponseWriter = async (context, report) =>
+            //    {
+            //        context.Response.ContentType = "application/json";
 
-                    var response = new
-                    {
-                        status = report.Status.ToString(),
-                        checks = report.Entries.Select(entry => new
-                        {
-                            check = entry.Key,
-                            status = entry.Value.Status.ToString(),
-                        }),
-                        duration = report.TotalDuration
-                    };
+            //        var response = new
+            //        {
+            //            status = report.Status.ToString(),
+            //            checks = report.Entries.Select(entry => new
+            //            {
+            //                check = entry.Key,
+            //                status = entry.Value.Status.ToString(),
+            //            }),
+            //            duration = report.TotalDuration
+            //        };
 
-                    await context.Response.WriteAsJsonAsync(response);
-                }
-            });
+            //        await context.Response.WriteAsJsonAsync(response);
+            //    }
+            //});
 
 
             app.MapControllers();
