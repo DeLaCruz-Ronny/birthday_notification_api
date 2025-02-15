@@ -17,7 +17,7 @@ namespace birthday_notification_api
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddHealthChecks().AddMySql(builder.Configuration.GetConnectionString("DefaultConnection"), name: "database");
+            builder.Services.AddHealthChecks().AddMySql(builder.Configuration.GetConnectionString("DefaultConnection")!, name: "database");
 
             builder.Services.AddScoped<BirthdayService>();
 
