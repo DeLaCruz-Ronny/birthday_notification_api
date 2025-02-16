@@ -51,9 +51,9 @@ namespace birthday_notification_api.Servicios
                 {
                     id = reader.GetInt32("id"),
                     nombre = reader.GetString("nombre"),
-                    telefono = reader.GetString("descripcion"),
+                    telefono = reader.GetString("telefono"),
                     fecha_cumpleanos = reader.GetDateTime("fecha_cumpleanos"),
-                    url_imag = reader.GetString("url_img"),
+                    url_img = reader.GetString("url_img"),
                     fecha_registro = reader.GetDateTime("fecha_registro")
                 });
             }
@@ -81,9 +81,9 @@ namespace birthday_notification_api.Servicios
                 {
                     id = reader.GetInt32("id"),
                     nombre = reader.GetString("nombre"),
-                    telefono = reader.GetString("descripcion"),
+                    telefono = reader.GetString("telefono"),
                     fecha_cumpleanos = reader.GetDateTime("fecha_cumpleanos"),
-                    url_imag = reader.GetString("url_img"),
+                    url_img = reader.GetString("url_img"),
                     fecha_registro = reader.GetDateTime("fecha_registro")
                 };
             }
@@ -103,7 +103,7 @@ namespace birthday_notification_api.Servicios
             command.Parameters.AddWithValue("@nombre", newpersona?.nombre);
             command.Parameters.AddWithValue("@telefono", newpersona?.telefono);
             command.Parameters.AddWithValue("@fecha_cumpleanos", newpersona?.fecha_cumpleanos);
-            command.Parameters.AddWithValue("@url_img", newpersona?.url_imag);
+            command.Parameters.AddWithValue("@url_img", newpersona?.url_img);
 
             var insertados = await command.ExecuteNonQueryAsync();
             return insertados > 0;
@@ -140,7 +140,7 @@ namespace birthday_notification_api.Servicios
             command.Parameters.AddWithValue("@nombre", persona?.nombre);
             command.Parameters.AddWithValue("@telefono", persona?.telefono);
             command.Parameters.AddWithValue("@fecha_cumpleanos", persona?.fecha_cumpleanos);
-            command.Parameters.AddWithValue("@url_img", persona?.url_imag);
+            command.Parameters.AddWithValue("@url_img", persona?.url_img);
 
             var update = await command.ExecuteNonQueryAsync();
             return update > 0;

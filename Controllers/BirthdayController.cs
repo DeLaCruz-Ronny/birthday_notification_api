@@ -49,7 +49,7 @@ namespace birthday_notification_api.Controllers
                 return BadRequest(new { mensaje = "El telefono es obligatorio" });
             }
 
-            persona.url_imag = _birthdayService.SubirImg(persona.url_imag);
+            persona.url_img = _birthdayService.SubirImg(persona.url_img);
 
             var success = await _birthdayService.CrearPersona(persona);
 
@@ -85,10 +85,10 @@ namespace birthday_notification_api.Controllers
                 return BadRequest(new { mensaje = "El telefono es obligatorio" });
             }
 
-            var valor = UrlValida(persona.url_imag);
+            var valor = UrlValida(persona.url_img);
             if (!valor)
             {
-                persona.url_imag = _birthdayService.SubirImg(persona.url_imag);
+                persona.url_img = _birthdayService.SubirImg(persona.url_img);
             }
 
             var success = await _birthdayService.ActualizarPersona(persona);
