@@ -19,6 +19,7 @@ x64/
 [Bb]uild[Ll]og.*
 
 .vs/
+.env*
 
 *_i.c
 *_p.c

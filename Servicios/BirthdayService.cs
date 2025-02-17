@@ -3,6 +3,7 @@ using birthday_notification_api.Models;
 using birthday_notification_api.Models.Models;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
+using DotNetEnv;
 using MySql.Data.MySqlClient;
 using System.Data;
 
@@ -16,6 +17,8 @@ namespace birthday_notification_api.Servicios
 
         public BirthdayService(IConfiguration configuration, IMapper mapper)
         {
+            Env.Load();
+
             _context = configuration.GetConnectionString("DefaultConnection");
             _mapper = mapper;
 
@@ -25,9 +28,13 @@ namespace birthday_notification_api.Servicios
                        .Build();
 
             //Obtenemos los usersecrests
-            var cloudName = conf["MiApp:cloudName"];
-            var apiKey = conf["MiApp:apiKey"];
-            var apiSecrets = conf["MiApp:apiSecrets"];
+            //var cloudName = conf["MiApp:cloudName"];
+            //var apiKey = conf["MiApp:apiKey"];
+            //var apiSecrets = conf["MiApp:apiSecrets"];
+
+            var cloudName = Environment.GetEnvironmentVariable("CLOUDNAME");
+            var apiKey = Environment.GetEnvironmentVariable("APIKEY");
+            var apiSecrets = Environment.GetEnvironmentVariable("APISECRETS");
 
             //Inicializamos Cloudinary
             var account = new Account(cloudName, apiKey, apiSecrets);
