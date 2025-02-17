@@ -18,6 +18,7 @@ namespace birthday_notification_api.Controllers
         }
 
         [HttpGet]
+        [Route("ObtenerTodos")]
         public async Task<ActionResult<List<BirthdayDTO>>> ObtenerTodos()
         {
             var todos = await _birthdayService.ObtenerTodos();
