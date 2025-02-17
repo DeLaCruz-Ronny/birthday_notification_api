@@ -25,7 +25,8 @@ namespace birthday_notification_api.Controllers
             return Ok(todos);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("ObtenerPorId/{id}")]
         public async Task<ActionResult<BirthdayDTO>> ObtenerPorId(int id)
         {
             var persona = await _birthdayService.ObtenerPorId(id);
@@ -38,6 +39,7 @@ namespace birthday_notification_api.Controllers
         }
 
         [HttpPost]
+        [Route("CrearPersona")]
         public async Task<IActionResult> CrearPersona([FromBody] Birthday persona)
         {
             if (string.IsNullOrEmpty(persona.nombre))
@@ -62,7 +64,8 @@ namespace birthday_notification_api.Controllers
             return StatusCode(500, new { mensaje = "Error al crear el registro" });
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
+        [Route("ActualizarPersona/{id}")]
         public async Task<IActionResult> ActualizarPersona(int id, [FromBody] Birthday persona)
         {
             var existepersona = await _birthdayService.ObtenerPorId(persona.id);
@@ -101,8 +104,9 @@ namespace birthday_notification_api.Controllers
             return StatusCode(500, new { mensaje = "Error al actualizar a la persona." });
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> EliminarServicio(int id)
+        [HttpDelete]
+        [Route("EliminarPersona/{id}")]
+        public async Task<IActionResult> EliminarPersona(int id)
         {
             var success = await _birthdayService.EliminarPersona(id);
 

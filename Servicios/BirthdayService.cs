@@ -19,7 +19,8 @@ namespace birthday_notification_api.Servicios
         {
             Env.Load();
 
-            _context = configuration.GetConnectionString("DefaultConnection");
+            //_context = configuration.GetConnectionString("DefaultConnection");
+            _context = Environment.GetEnvironmentVariable("DEFAULTCONNECTION");
             _mapper = mapper;
 
             //Llamar a las variables que estan en el usersecrets y trabajar con cloudinary para las img
