@@ -22,14 +22,14 @@ namespace birthday_notification_api
 
             builder.Services.AddScoped<BirthdayService>();
 
-            builder.Services.AddAutoMapper(typeof(Program));
+            builder.Services.AddAutoMapper(typeof(Program)); 
 
             builder.Services.AddCors(opt =>
             {
                 opt.AddPolicy("AllowAll", policy =>
                 {
-                    policy.WithOrigins("*").
-                           //AllowAnyOrigin().
+                    policy.//WithOrigins("*").
+                           AllowAnyOrigin().
                            AllowAnyHeader().
                            AllowAnyMethod();
                 });
