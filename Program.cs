@@ -27,7 +27,7 @@ namespace birthday_notification_api
             {
                 opt.AddPolicy("AllowAll", policy =>
                 {
-                    policy.WithOrigins("*"). 
+                    policy.WithOrigins("https://birthdayapi.sykos.dev"). 
                            //AllowAnyOrigin().
                            AllowAnyHeader().
                            AllowAnyMethod();
