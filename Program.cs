@@ -9,6 +9,7 @@ namespace birthday_notification_api
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            var frontUrl = Environment.GetEnvironmentVariable("FRONTED_URL")!;
 
             // Add services to the container.
 
@@ -27,7 +28,7 @@ namespace birthday_notification_api
             {
                 opt.AddPolicy("AllowAll", policy =>
                 {
-                    policy.WithOrigins("https://birthdayapi.sykos.dev"). 
+                    policy.WithOrigins(frontUrl). 
                            //AllowAnyOrigin().
                            AllowAnyHeader().
                            AllowAnyMethod();
