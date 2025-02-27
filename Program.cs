@@ -24,16 +24,16 @@ namespace birthday_notification_api
 
             builder.Services.AddAutoMapper(typeof(Program));
 
-            //builder.Services.AddCors(opt =>
-            //{
-            //    opt.AddPolicy("AllowAll", policy =>
-            //    {
-            //        policy.WithOrigins(frontUrl). 
-            //               //AllowAnyOrigin().
-            //               AllowAnyHeader().
-            //               AllowAnyMethod();
-            //    });
-            //});
+            builder.Services.AddCors(opt =>
+            {
+                opt.AddPolicy("AllowAll", policy =>
+                {
+                    policy.WithOrigins("*").
+                           //AllowAnyOrigin().
+                           AllowAnyHeader().
+                           AllowAnyMethod();
+                });
+            });
 
             var app = builder.Build();
 
@@ -49,7 +49,7 @@ namespace birthday_notification_api
 
             app.UseHttpsRedirection();
 
-            //app.UseCors("AllowAll");
+            app.UseCors("AllowAll");
 
             app.UseAuthorization();
 
