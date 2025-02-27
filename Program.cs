@@ -23,6 +23,17 @@ namespace birthday_notification_api
 
             builder.Services.AddAutoMapper(typeof(Program));
 
+            builder.Services.AddCors(opt =>
+            {
+                opt.AddPolicy("AllowAll", policy =>
+                {
+                    policy.WithOrigins("*"). 
+                           //AllowAnyOrigin().
+                           AllowAnyHeader().
+                           AllowAnyMethod();
+                });
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -36,6 +47,8 @@ namespace birthday_notification_api
             app.UseSwaggerUI();
 
             app.UseHttpsRedirection();
+
+            app.UseCors("AllowAll");
 
             app.UseAuthorization();
 
