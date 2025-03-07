@@ -40,16 +40,19 @@ namespace birthday_notification_api
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
+                app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
 
-            app.UseSwagger();
-            app.UseSwaggerUI();
+            //app.UseSwagger();
+            //app.UseSwaggerUI();
 
             app.UseHttpsRedirection();
 
             app.UseCors("AllowAll");
+
+            //app.UseStaticFiles();
 
             app.UseAuthorization();
 

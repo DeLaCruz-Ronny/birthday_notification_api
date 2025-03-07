@@ -159,7 +159,9 @@ namespace birthday_notification_api.Servicios
             var parametros = new ImageUploadParams()
             {
                 File = new FileDescription(img),
-                PublicId = Path.GetFileNameWithoutExtension(img),
+                UseFilename = true,
+                //PublicId = Path.GetFileNameWithoutExtension(img),
+                Folder = "birthDay_api",
                 Overwrite = true
             };
 
