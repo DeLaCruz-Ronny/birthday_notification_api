@@ -5,6 +5,7 @@ using CloudinaryDotNet.Actions;
 using DotNetEnv;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.IO;
 
 namespace birthday_notification_api.Controllers
 {
@@ -60,7 +61,16 @@ namespace birthday_notification_api.Controllers
             try
             {
                 string fileName = imagen.FileName;
-                string filePath = Path.Combine("uploads", fileName);
+                //string filePath = Path.Combine("uploads", fileName);
+                //var stream = new FileStream(filePath, FileMode.Create);
+                //imagen.CopyTo(stream);
+                //string img_route = stream.Name;
+                //stream.Close();
+
+
+                var uploadFile = Path.Combine(AppContext.BaseDirectory, "uploads");
+                Directory.CreateDirectory(uploadFile);
+                string filePath = Path.Combine(uploadFile, fileName);
                 var stream = new FileStream(filePath, FileMode.Create);
                 imagen.CopyTo(stream);
                 string img_route = stream.Name;
